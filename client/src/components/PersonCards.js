@@ -1,21 +1,7 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styled from 'styled-components';
 import TinderCard from "react-tinder-card";
-
-const initialState = [
-    {
-        name: 'Daniel Simonov',
-        img: 'https://www.pandasecurity.com/en/mediacenter/src/uploads/2019/07/pandasecurity-How-do-hackers-pick-their-targets.jpg'
-    },
-    {
-        name: 'Guts',
-        img: 'https://pbs.twimg.com/profile_images/932326601592885250/rQ_dpiZ6.jpg'
-    },
-    {
-        name: 'Guts2',
-        img: 'https://pbs.twimg.com/profile_images/932326601592885250/rQ_dpiZ6.jpg'
-    }
-];
+import axios from '../api';
 
 const PersonsContainer = styled.div`
     position: absolute;
@@ -66,7 +52,16 @@ const CardTitle = styled.div`
 `;
 
 function PersonCards(props) {
-    const [persons, setPersons] = useState(initialState);
+    const [persons, setPersons] = useState([]);
+
+    useEffect(() => {
+        const getPersonsReq = async () => {
+            const res = await axios.get('/persons');
+            setPersons(res.data);
+        }
+
+        getPersonsReq();
+    }, []);
 
     return (
         <PersonsContainer>
