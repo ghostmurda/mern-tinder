@@ -38,10 +38,13 @@ const Card = styled.div`
     background: url(${props => props.url});
     background-position: center;
     background-size: cover;
-    box-shadow: 0 20px 30px 0 rgba(1, 1, 1, 0.3);
     width: 80vw;
     height: 600px;
     border-radius: 20px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
     
     @media (max-width: 500px){
         width: 94vw;
@@ -49,13 +52,17 @@ const Card = styled.div`
     }
 `;
 
-const CardTitle = styled.span`
-    position: absolute;
-    bottom: 0;
+const CardTitle = styled.div`
+    width: 100%;
+    height: 250px;
+    display: flex;
+    align-items: flex-end;
+    background: linear-gradient(360deg, rgba(73, 74, 73, 0.9), rgba(73, 74, 73, 0));
+    justify-content: center;
     color: white;
     font-size: 25px;
+    line-height: 100px;
     font-family: 'Roboto', sans-serif;
-    margin: 16px;
 `;
 
 function PersonCards(props) {
