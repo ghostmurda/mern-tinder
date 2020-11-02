@@ -18,10 +18,6 @@
 .env.test.local
 .env.production.local
 
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
 /.idea
 .idea/.gitignore
 .idea/codeStyles/codeStyleConfig.xml
@@ -33,3 +29,7 @@ yarn-error.log*
 .idea/vcs.xml
 .idea/workspace.xml
 .idea/typescript-app.iml
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
