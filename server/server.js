@@ -10,7 +10,7 @@ const dbConnectionUrl = 'mongodb+srv://admin:iIq73amzM7VR5vPE@cluster0.5nyc7.mon
 app.use(express.json());
 app.use(cors({
     credentials: true,
-    origin: ['http://localhost:3000', 'https://ghostmurda.github.io']
+    origin: ['http://localhost:3000', 'https://ghostmurda.github.io', 'https://mern-tinder-5f7ec.web.app']
 }));
 
 mongoose.connect(dbConnectionUrl, {
