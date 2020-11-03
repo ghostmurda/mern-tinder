@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import styled from 'styled-components';
 import TinderCard from "react-tinder-card";
 import axios from '../api';
+import loaderImg from '../img/loader.svg';
 
 const PersonsContainer = styled.div`
     position: absolute;
@@ -51,7 +52,18 @@ const CardTitle = styled.div`
     font-family: 'Roboto', sans-serif;
 `;
 
-function PersonCards(props) {
+const Loader = styled.img`
+    position: absolute;
+    left: 45vw;
+    top: 12vw;
+    
+    @media (max-width: 500px){
+        left: 24vw;
+        top: 40vw;
+    }
+`;
+
+function PersonCards() {
     const [persons, setPersons] = useState([]);
 
     useEffect(() => {
@@ -64,19 +76,22 @@ function PersonCards(props) {
     }, []);
 
     return (
-        <PersonsContainer>
-            {persons.map((item) => (
-                <TinderCard
-                    classname="swipe"
-                    key={item.name}
-                    preventSwipe={["up", "down"]}
-                >
-                    <Card url={item.img}>
-                        <CardTitle>{item.name}</CardTitle>
-                    </Card>
-                </TinderCard>
-            ))}
-        </PersonsContainer>
+        <>
+            <Loader src={loaderImg} alt="Loading"/>
+            <PersonsContainer>
+                {persons.map((item) => (
+                    <TinderCard
+                        classname="swipe"
+                        key={item.name}
+                        preventSwipe={["up", "down"]}
+                    >
+                        <Card url={item.img}>
+                            <CardTitle>{item.name}</CardTitle>
+                        </Card>
+                    </TinderCard>
+                ))}
+            </PersonsContainer>
+        </>
     )
 }
 
